@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Royal Spice Restaurant</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#111;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 8%;
+      position:fixed;
+      top:0;
+      z-index:1000;
+      background:rgba(0,0,0,0.7);
+      backdrop-filter:blur(8px);
+    }
+
+    .logo{
+      font-size:32px;
+      font-weight:700;
+      color:#ffb400;
+    }
+
+    .logo span{
+      color:white;
+    }
+
+    nav ul{
+      display:flex;
+      gap:30px;
+      list-style:none;
+    }
+
+    nav ul li a{
+      text-decoration:none;
+      color:white;
+      transition:0.3s;
+      font-weight:500;
+    }
+
+    nav ul li a:hover{
+      color:#ffb400;
+    }
+
+    /* HERO */
+
+    .hero{
+      width:100%;
+      height:100vh;
+      background:
+      linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+      url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1600&auto=format&fit=crop');
+
+      background-size:cover;
+      background-position:center;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      flex-direction:column;
+      padding:20px;
+    }
+
+    .hero h1{
+      font-size:70px;
+      margin-bottom:20px;
+      color:#fff;
+    }
+
+    .hero p{
+      max-width:700px;
+      color:#ddd;
+      line-height:1.8;
+      margin-bottom:30px;
+      font-size:18px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:15px 35px;
+      background:#ffb400;
+      color:black;
+      text-decoration:none;
+      border-radius:40px;
+      font-weight:600;
+      transition:0.4s;
+    }
+
+    .btn:hover{
+      background:white;
+      transform:scale(1.05);
+    }
+
+    /* SECTION TITLE */
+
+    .title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .title h2{
+      font-size:50px;
+      color:#ffb400;
+      margin-bottom:10px;
+    }
+
+    .title p{
+      color:#bbb;
+    }
+
+    /* ABOUT */
+
+    .about{
+      padding:100px 8%;
+      background:#1b1b1b;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:50px;
+      flex-wrap:wrap;
+    }
+
+    .about img{
+      width:500px;
+      border-radius:20px;
+    }
+
+    .about-text{
+      max-width:550px;
+    }
+
+    .about-text h2{
+      font-size:45px;
+      color:#ffb400;
+      margin-bottom:20px;
+    }
+
+    .about-text p{
+      line-height:1.9;
+      color:#ccc;
+      margin-bottom:25px;
+    }
+
+    /* MENU */
+
+    .menu{
+      padding:100px 8%;
+      background:#111;
+    }
+
+    .menu-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:#1e1e1e;
+      border-radius:20px;
+      overflow:hidden;
+      transition:0.4s;
+      box-shadow:0 10px 20px rgba(0,0,0,0.3);
+    }
+    
+
+    .card:hover{
+      transform:translateY(-10px);
+    }
+
+    .card img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+    }
+
+    .card-content{
+      padding:20px;
+    }
+
+    .card-content h3{
+      color:#ffb400;
+      margin-bottom:10px;
+    }
+
+    .card-content p{
+      color:#ccc;
+      line-height:1.7;
+    }
+
+    .price{
+      margin-top:15px;
+      font-size:22px;
+      font-weight:bold;
+      color:white;
+    }
+    
+
+    /* SERVICES */
+
+    .services{
+      padding:100px 8%;
+      background:#1b1b1b;
+    }
+
+    .service-boxes{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
+    }
+
+    .service{
+      background:#222;
+      padding:40px 25px;
+      border-radius:20px;
+      text-align:center;
+      transition:0.4s;
+    }
+
+    .service:hover{
+      background:#ffb400;
+      color:black;
+      transform:scale(1.05);
+    }
+
+    .service h3{
+      margin-bottom:15px;
+      font-size:24px;
+    }
+
+    /* CONTACT */
+
+    .contact{
+      padding:100px 8%;
+      background:#111;
+      text-align:center;
+    }
+
+    form{
+      max-width:700px;
+      margin:auto;
+    }
+
+    input, textarea{
+      width:100%;
+      padding:18px;
+      margin-bottom:20px;
+      border:none;
+      border-radius:10px;
+      background:#222;
+      color:white;
+      font-size:16px;
+    }
+
+    textarea{
+      height:150px;
+      resize:none;
+    }
+
+    button{
+      padding:15px 35px;
+      border:none;
+      background:#ffb400;
+      border-radius:40px;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.4s;
+    }
+
+    button:hover{
+      background:white;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:black;
+      text-align:center;
+      padding:25px;
+      color:#888;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:45px;
+      }
+
+      nav ul{
+        display:none;
+      }
+
+      .about img{
+        width:100%;
+      }
+
+      .title h2{
+        font-size:35px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+    <div class="logo">Royal<span>Spice</span></div>
+
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <h1>Luxury Taste Experience</h1>
+
+    <p>
+      Enjoy delicious breakfast, lunch, dinner, snacks and sweets
+      prepared by professional chefs with premium ingredients.
+    </p>
+
+    <a href="#" class="btn">Book Table</a>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section class="about" id="about">
+
+    <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=1200&auto=format&fit=crop">
+
+    <div class="about-text">
+
+      <h2>About Our Restaurant</h2>
+
+      <p>
+        Royal Spice Restaurant offers premium quality food with modern
+        dining experience. We serve Indian, Chinese, Italian and
+        continental dishes with rich taste and beautiful presentation.
+      </p>
+
+      <a href="#" class="btn">Read More</a>
+
+    </div>
+
+  </section>
+
+  <!-- MENU -->
+
+  <section class="menu" id="menu">
+
+    <div class="title">
+      <h2>Our Special Menu</h2>
+      <p>Breakfast • Lunch • Dinner • Snacks • Sweets</p>
+    </div>
+
+    <div class="menu-container">
+
+      <!-- 25 DISHES -->
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=1200&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>Masala Dosa</h3>
+          <p>Crispy dosa with chutney and sambar.</p>
+          <div class="price">₹120</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=1200&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>Idli Sambar</h3>
+          <p>Soft idli with spicy sambar.</p>
+          <div class="price">₹80</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>Poori Masala</h3>
+          <p>Fresh poori with potato masala.</p>
+          <div class="price">₹110</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?q=80&w=1200&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>Omelette Toast</h3>
+          <p>Cheese omelette with crispy toast.</p>
+          <div class="price">₹140</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=1200&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>Chicken Biryani</h3>
+          <p>Traditional spicy dum biryani.</p>
+          <div class="price">₹280</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>Veg Meals</h3>
+          <p>Unlimited South Indian meals.</p>
+          <div class="price">₹220</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1562967916-eb82221dfb92?q=80&w=1200&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>Fried Rice</h3>
+          <p>Hot vegetable fried rice.</p>
+          <div class="price">₹190</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://imgs.search.brave.com/Kwbu0smVfLHttL-pfbb14xzuurzLERUIeRIZPTIe8dI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGV4ZWxzLmNv/bS9waG90b3MvMjk2/ODUwNTQvcGV4ZWxz/LXBob3RvLTI5Njg1/MDU0L2ZyZWUtcGhv/dG8tb2YtZGVsaWNp/b3VzLWluZGlhbi1i/dXR0ZXItY2hpY2tl/bi1pbi1jb3BwZXIt/cGFuLmpwZWc_YXV0/bz1jb21wcmVzcyZj/cz10aW55c3JnYiZk/cHI9MSZ3PTUwMA">
+        <div class="card-content">
+          <h3>Butter Chicken</h3>
+          <p>Creamy butter chicken curry.</p>
+          <div class="price">₹320</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=1200&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>Paneer Curry</h3>
+          <p>Paneer cubes in rich gravy.</p>
+          <div class="price">₹240</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://imgs.search.brave.com/RnxtjqnvZgc23UXwn4WAIaS8p6YpInyUbKB84OOx0Qg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wNTAv/Mzk3LzU1OS9zbWFs/bC9ncmlsbGVkLWZp/c2gtd2l0aC12ZWdl/dGFibGVzLWFuZC1s/ZW1vbi1vbi13aGl0/ZS1iYWNrZ3JvdW5k/LXBob3RvLmpwZWc">
+        <div class="card-content">
+          <h3>Grilled Fish</h3>
+          <p>Fresh grilled fish special.</p>
+          <div class="price">₹350</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1606755962773-d324e0a13086?q=80&w=1200&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>BBQ Chicken</h3>
+          <p>Smoky barbecue chicken.</p>
+          <div class="price">₹300</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=1200&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>Cheese Pasta</h3>
+          <p>Italian creamy cheese pasta.</p>
+          <div class="price">₹260</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?q=80&w=1200&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>Veg Pizza</h3>
+          <p>Loaded vegetable pizza.</p>
+          <div class="price">₹340</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?q=80&w=1200&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>Tandoori Roti</h3>
+          <p>Soft roti with curry combo.</p>
+          <div class="price">₹180</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?q=80&w=1200&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>French Fries</h3>
+          <p>Crispy fries with ketchup.</p>
+          <div class="price">₹130</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1608039755401-742074f0548d?q=80&w=1200&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>Chicken Nuggets</h3>
+          <p>Crunchy chicken nuggets.</p>
+          <div class="price">₹170</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?q=80&w=1200&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>Veg Sandwich</h3>
+          <p>Fresh vegetable sandwich.</p>
+          <div class="price">₹150</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?q=80&w=1200&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>Cheese Burger</h3>
+          <p>Juicy burger with cheese.</p>
+          <div class="price">₹210</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?q=80&w=1200&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>Samosa</h3>
+          <p>Hot crispy samosa special.</p>
+          <div class="price">₹60</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=1200&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>Chocolate Cake</h3>
+          <p>Rich chocolate layered cake.</p>
+          <div class="price">₹180</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?q=80&w=1200&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>Ice Cream</h3>
+          <p>Vanilla ice cream delight.</p>
+          <div class="price">₹120</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1200&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>Gulab Jamun</h3>
+          <p>Soft sweet gulab jamun.</p>
+          <div class="price">₹90</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=1200&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>Brownie</h3>
+          <p>Chocolate brownie special.</p>
+          <div class="price">₹160</div>
+        </div>
+      </div>
+      
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=1200&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>Fruit Dessert</h3>
+          <p>Fresh fruit cream dessert.</p>
+          <div class="price">₹140</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=1200&auto=format&fit=crop">
+        <div class="card-content">
+          <h3>Caesar Salad</h3>
+          <p>Healthy fresh vegetable salad.</p>
+          <div class="price">₹170</div>
+        </div>
+      </div>
+
+    </div>
+    
+
+  </section>
+
+  <!-- SERVICES -->
+
+  <section class="services" id="services">
+
+    <div class="title">
+      <h2>Why Choose Us</h2>
+      <p>Premium Quality & Excellent Service</p>
+    </div>
+
+    <div class="service-boxes">
+
+      <div class="service">
+        <h3>Luxury Dining</h3>
+        <p>Modern stylish interior experience.</p>
+      </div>
+
+      <div class="service">
+        <h3>Professional Chefs</h3>
+        <p>World-class experienced chefs.</p>
+      </div>
+
+      <div class="service">
+        <h3>Fresh Ingredients</h3>
+        <p>Daily fresh vegetables and meats.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section class="contact" id="contact">
+
+    <div class="title">
+      <h2>Contact Us</h2>
+      <p>Reserve Your Table Today</p>
+    </div>
+
+    <form>
+
+      <input type="text" placeholder="Your Name">
+
+      <input type="email" placeholder="Your Email">
+
+      <textarea placeholder="Your Message"></textarea>
+
+      <button type="submit">Send Message</button>
+
+    </form>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    © 2026 Royal Spice Restaurant | All Rights Reserved
+  </footer>
+
+</body>
+</html>
